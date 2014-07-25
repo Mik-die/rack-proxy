@@ -5,7 +5,7 @@ module Rack
 
   # Subclass and bring your own #rewrite_request and #rewrite_response
   class Proxy
-    VERSION = "0.5.14"
+    VERSION = "0.5.15"
 
     class << self
       def extract_http_request_headers(env)
@@ -43,7 +43,7 @@ module Rack
       @streaming = opts.fetch(:streaming, true)
       @ssl_verify_none = opts.fetch(:ssl_verify_none, false)
       @backend = URI(opts[:backend]) if opts[:backend]
-      @read_timeout = opts.fetch(:read_timeout, 30)
+      @read_timeout = opts.fetch(:read_timeout, 60)
     end
 
     def call(env)
